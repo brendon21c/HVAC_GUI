@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Vector;
 
@@ -15,9 +16,9 @@ public class FurnaceGUI extends JFrame{
     private JTextField issueEntry;
     private JComboBox typeSelection;
     private JButton closeButton;
-    private Date date;
+    private Date date = Calendar.getInstance().getTime();
 
-    HVAC_MainGUI hvacManager = new HVAC_MainGUI();
+   HVAC_MainGUI hvacManager = new HVAC_MainGUI();
 
 
 
@@ -49,11 +50,6 @@ public class FurnaceGUI extends JFrame{
                 Job furn = new Job(address,issue,type,date);
 
                 hvacManager.data.add(furn);
-
-                for (Job t : hvacManager.data){ // trying to display this information on the previous windoe
-
-                    hvacManager.tickets.addElement(t);
-                }
 
                 setVisible(false);
 

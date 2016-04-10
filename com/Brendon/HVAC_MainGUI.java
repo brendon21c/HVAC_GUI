@@ -16,9 +16,9 @@ public class HVAC_MainGUI extends JFrame {
     private JList ResolvedList;
     private JButton resolveButton;
     private JButton quitButton;
-    private JButton executeButton;
+    private JButton selectButton;
 
-    protected DefaultListModel tickets;
+    public DefaultListModel tickets;
     Vector<Job> data;
 
 
@@ -32,7 +32,11 @@ public class HVAC_MainGUI extends JFrame {
 
         super("HVAC Requests");
 
+
         tickets = new DefaultListModel<String>();
+
+        OpenReqList.setModel(tickets);
+        OpenReqList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 
         setContentPane(rootPanel);
         setPreferredSize(new Dimension(500,500));
@@ -54,27 +58,27 @@ public class HVAC_MainGUI extends JFrame {
 
                  isFurnace = furnaceRadioButton.isSelected();
 
+                if (isFurnace == true) {
+
+                    FurnaceGUI test = new FurnaceGUI();
+                    test.FurnaceGUI();
+                    //setVisible(false);
+
+                }
+
                 }
 
         });
 
 
-
-
-        executeButton.addActionListener(new ActionListener() {
+        selectButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                if (isFurnace == true) {
+                for (Job t : data) {
 
-                    FurnaceGUI test = new FurnaceGUI();
-                    test.FurnaceGUI();
-
-
-
+                    tickets.addElement(t);
                 }
-
-
 
             }
         });

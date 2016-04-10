@@ -1,13 +1,14 @@
 package com.Brendon;
 
 
+import java.util.Calendar;
 import java.util.Date;
 
 public class Job {
 
     private String address;
     private String problem;
-    private Date date;
+    private Date date = Calendar.getInstance().getTime();
     private String furType;
 
 
@@ -24,6 +25,7 @@ public class Job {
     @Override
     public String toString() {
 
-        return "Furnace issue: " + address + problem + furType + date;
+        return "Furnace: " + "Location: " + address + " Issue: " + problem +
+                " Furnace Type: " + furType + " Date Requested: " + date;
     }
 }
