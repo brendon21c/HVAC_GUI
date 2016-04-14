@@ -1,13 +1,15 @@
 package com.Brendon;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Calendar;
 import java.util.Date;
-import java.util.Vector;
 
-
+/*
+This is the widow for enetering a job for a Furnace, it will pass the information
+back to the main window and add the job to the furnace list and display the job.
+ */
 public class FurnaceGUI extends JFrame{
     private JPanel rootPanel;
     private JTextField addressEntry;
@@ -15,20 +17,20 @@ public class FurnaceGUI extends JFrame{
     private JTextField issueEntry;
     private JComboBox typeSelection;
     private JButton closeButton;
-    private Date date;
-
-    HVAC_MainGUI hvacManager = new HVAC_MainGUI();
+    private Date date = Calendar.getInstance().getTime();
 
 
-
-    public void FurnaceGUI() {
+    FurnaceGUI(final HVAC_MainGUI parentComponent) {
 
 
         setContentPane(rootPanel);
+        setLocation(300,300);
         pack();
         setVisible(true);
+        parentComponent.setEnabled(false);
 
-        hvacManager.data = new Vector<Job>();
+
+        //hvacManager.data = new Vector<Job>();
 
 
         typeSelection.addItem("Forced Air");
@@ -48,14 +50,10 @@ public class FurnaceGUI extends JFrame{
 
                 Job furn = new Job(address,issue,type,date);
 
-                hvacManager.data.add(furn);
-
-                for (Job t : hvacManager.data){ // trying to display this information on the previous windoe
-
-                    hvacManager.tickets.addElement(t);
-                }
-
-                setVisible(false);
+                parentComponent.openList.add(furn);
+                parentComponent.openTickets.addElement(furn);
+                parentComponent.setEnabled(true);
+                FurnaceGUI.this.dispose();
 
 
             }

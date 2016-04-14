@@ -1,10 +1,10 @@
 package com.Brendon;
 
-
 import java.util.Calendar;
 import java.util.Date;
 
-public class Job {
+
+public class jobAC {
 
     private String address;
     private String problem;
@@ -12,7 +12,7 @@ public class Job {
     private String type;
 
 
-    public Job(String location, String issue,String type, Date date) {
+    public jobAC(String location, String issue,String type, Date date) {
 
         this.address = location;
         this.problem = issue;
@@ -25,7 +25,8 @@ public class Job {
     @Override
     public String toString() {
 
-        return "Furnace: " + "Location: " + address + " Issue: " + problem +
-                " Furnace Type: " + type + " Date Requested: " + date;
+        return "Air Conditioning: " + "Location: " + address + " Issue: " + problem +
+                " AC Type: " + type + " Date Requested: " + date;
     }
+
 }
